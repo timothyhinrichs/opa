@@ -1,13 +1,752 @@
 {{ define "main" }}
-{{ partial "home/svg.html" . }}
-{{ partial "home/banner.html" . }}
+  <!doctype html>
+  <html lang="en">
 
-<main role="main">
-  {{ partial "home/traits.html" . }}
-  {{ partial "home/use-cases.html" . }}
-</main>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{{ partial "home/footer.html" . }}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<script type="text/javascript" src="/js/home.js"></script>
+    <title>OPA </title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+
+  <body>
+  <div id="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <div class="container">
+
+        <a class="navbar-brand" href="#top"><img src="./images/logo-white.png" class="img-fluid"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navb">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Documentation </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tutorials </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Playground</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+
+  <!-- <section id="homebackground">
+      <div class="bg"><img src="./images/homebg.png"></div>
+      <div class="cloud-top"><img src="./images/cloudAll.png"></div>
+      <div class="homepageconterimage"><img src="./images/homeBanner.png"></div>
+    </section> -->
+
+  <section id="homebackground">
+
+    <div class="bg">
+      <div class="banner-content">Policy-based control for cloud native environments</div>
+      <div class="banner-subcontent">Flexible, fine-grained control for administrators across the stack</div>
+      <img src="./images/banner-image.png">
+    </div>
+  </section>
+
+  <div class="clearfix"></div>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="about-text">
+            <p>
+              Stop using a different policy language, policy model, and policy API for every product and service you
+              use. Use OPA
+              for a unified toolset and framework for policy across the cloud native stack.<br><br>
+              It’s not all-or-nothing. Even for a single product or service, use OPA to decouple policy from the
+              underlying code so
+              you can release, analyze, and review policies (which security and compliance teams love) without
+              sacrificing
+            </p>
+          </div>
+          <div class="mt-5 text-center blue">
+            <button class="btn btn-primary"><a><span>Learn More:</span></a> <a href="#">Kubernetes</a> - <a href="#">Envoy</a> - <a href="#">Terraform</a> - <a href="#">Kafka</a>
+              - <a href="#">Ceph</a> - <a href="#">SQL</a> - <a href="#">Linux</a></button>
+          </div>
+          <div class="mt-5 text-center">
+            <div class="styraText">
+              <p>Created By</p><span> <img src="./images/styra-logo.jpg" class="img-fluid"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mt-5">
+          <div class="box-1 text-center">
+            <div class="boxTop">
+              <div class="boxTop-heading">
+                <h3>OPA v 0.14.1 Released</h3>
+                <h3>Release Notes</h3>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="boxBottom text-center">
+            <div class="boxBottom-heading pt-4 pb-4">
+              <p>August 8, 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mt-5">
+          <div class="box-1 text-center">
+            <div class="boxTop">
+              <div class="boxTop-heading">
+                <h3>Blog on WASM</h3>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="boxBottom text-center">
+            <div class="boxBottom-heading  pt-4 pb-4">
+              <p>August 15, 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mt-5">
+          <div class="box-1 text-center">
+            <div class="boxTop">
+              <div class="boxTop-heading">
+                <h3>External blog on SSH</h3>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="boxBottom text-center">
+            <div class="boxBottom-heading  pt-4 pb-4">
+              <p>August 19, 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mt-5">
+          <div class="box-1 text-center">
+            <div class="boxTop">
+              <div class="boxTop-heading">
+                <h3>Meetup in SF on OPA: OPA for CICD</h3>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="boxBottom text-center">
+            <div class="boxBottom-heading  pt-4 pb-4">
+              <p>August 20, 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mt-5">
+          <div class="box-1 text-center">
+            <div class="boxTop">
+              <div class="boxTop-heading">
+                <h3>OPA Summit at Kubecon. CFPs</h3>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="boxBottom text-center">
+            <div class="boxBottom-heading  pt-4 pb-4">
+              <p>Sept 1, 2019</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="gray">
+
+    <div class="gray-top-image"><img src="./images/gray-top.png"></div>
+    <section id="declarative-policy">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center pt-5">
+            <h2>Declarative Policy</h2>
+            <div class="subText">Context-aware, Expressive, Fast, Portable</div>
+          </div>
+          <div class="mr-auto  col-md-4 col-lg-3"></div>
+          <div class="col-12  col-md-8  col-lg-9 mt-sm-5">
+            <div class="declarative-table mt-5">
+              <!-- Tab panes -->
+
+              <div class="verticle-tabs">
+                <ul class="nav nav-tabs flex-column" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" id="tabs-5" role="tab" id="showTable">
+                      allow superusers to do
+                      anything, and disallow
+                      admin operations from
+                      external network
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" id="tabs-6" role="tab">
+                      prevent unauthorized
+                      users from seeing
+                      anything other than
+                      the home page
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+
+
+              <div class="tab-pane " id="tab-5" role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist" id="tableOne">
+                  <li class="nav-item">
+                    <a class="nav-link nav-width active" data-toggle="tab" href="#tabs-1"  role="tab">
+                      <img src="./images/policyIcon-1.png">
+                      Kubernetes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-2"  role="tab">
+                      <img src="./images/policyIcon-2.png" class="envoyLogo">
+                      Envoy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-3" role="tab">
+                      <img src="./images/policyIcon-3.png">
+                      Terraform</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-4" role="tab">
+                      <img src="./images/policyIcon-4.png">
+                      Application</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                    <div class="tab-innerContainer">
+                      <div class="col-12 whitebox">
+                        <p># Kubernetes Admission Control Invariants</p><br>
+                        <p>package kubernetes.invariants</p><br>
+                        <p>import data.kubernetes.ingresses</p>
+                        <p>import data.kubernetes.namespaces</p>
+                      </div>
+                      <div class="col-12 whitebox">
+                        <p># Generates a list of non-compliant ingresses identified by `namespace`</p>
+                        <p># and ingress specification `name`.</p>
+                        <p>violations[{<br>
+                          “namespace”: namespace,<br>
+                          “name”: name,<br>
+                          “message”: “ingress hostname must match whitelist”<br>
+                          }] {<br>
+                          ingress := ingresses[ namespace ][ name ]<br>
+                          host := ingress.spec.rules[ _ ].host<br>
+                          not contains( whitelist [ namespace ], host)</p>
+                      </div>
+                      <div class="col-12 whitebox">
+                        <p>contains(list, item) {<br>
+                          list [ _ ] = item</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="tabs-2" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p># HTTP API Authorization<br>
+                        package acmecorp.authz<br>
+                        default allow = false
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        # Allow people to read their own salaries.<br>
+                        allow {<br>
+                        input.method = “GET”<br>
+                        input.path = [ “salaries”, employee_id ]<br>
+                        input.user = employee_id<br>
+                        }<br>
+                        # Also allow managers to read the salaries of people they manage.<br>
+                        allow {<br>
+                        input.method = “GET”<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>input.path = [ “salaries”, employee_id ]<br>
+                        input.user = data.manager_of [ employee_id ]</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tabs-3" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p>
+                        # Fine-Grained SSH Authorization<br>
+                        package ssh.fine_grained<br>
+                        # Allow users in the “dev” organization to SSH into hosts if they
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        # possess a certificate proving they are assigned to an application<br>
+                        # running on the host.<br>
+                        allow {<br>
+                        # Extract the X.509 certificate provided in the policy query.<br>
+                        certs := crypto.x509.parse_certificates(input.certificates)<br>
+                        # Check that the user is part of the “dev” organization for an app<br>
+                        # running on this host.<br>
+                        certs[ i ].Subject.Organization[ j ] == data.host_info.apps[ _ ]<br>
+                        certs[ i ].Subject.OrganizationalUnit[ j ] == “dev”<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        time.now_ns() >= certs[ i ].NotBefore<br>
+                        time.now_ns() <= certs[ i ].NotAfter<br>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tabs-4" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p># Partial Evaluation<br>
+                        package app.filtering<br>
+                        # ——————————————————————————————————<br>
+                        # Data Filtering<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        # Allow users to see their own posts.<br>
+                        posts [ post ] {<br>
+                        post := data.posts [ _ ] <br>
+                        post.owner = input.subject.name<br>
+                        }<br>
+                        # Allow users to see posts from their own department<br>
+                        # that they have sufficient clearance for.<br>
+                        posts[ post ] {<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        post := data.posts [ _ ]<br>
+                        post.department = input.subject.department<br>
+                        post.security_level <= input.subject.clearance_level<br>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane tohide" id="tab-6"  role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist" id="tableOne">
+                  <li class="nav-item">
+                    <a class="nav-link nav-width active"  data-toggle="tab" href="#tabs-11" role="tab">
+                      <img src="./images/policyIcon-1.png">
+                      Kubernetes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-22" role="tab">
+                      <img src="./images/policyIcon-2.png" class="envoyLogo">
+                      Envoy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-33" role="tab">
+                      <img src="./images/policyIcon-3.png">
+                      Terraform</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-width" data-toggle="tab" href="#tabs-44" role="tab">
+                      <img src="./images/policyIcon-4.png">
+                      Application</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tabs-11" role="tabpanel">
+                    <div class="tab-innerContainer">
+                      <div class="col-12 whitebox">
+                        <p>
+                          # Example Output:<br>
+                          #<br>
+                          # Conditions (1)<br>
+                          # ———————<br>
+                        </p>
+                      </div>
+                      <div class="col-12 whitebox">
+                        <p>
+
+                          # data.posts [ x ].owner = “bob”<br>
+                          # Conditions (2)<br>
+                          # ———————<br>
+                          # data.posts[ x ].department = “ops”<br>
+                          # data.posts[ x ].clearance_level <= 3<br>
+                        </p>
+                      </div>
+                      <div class="col-12 whitebox">
+                        <p>Allow users to see posts from their own department<br>
+                          that they have sufficient clearance for.</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="tabs-22" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p>
+                        package kubernetes.invariants<br>
+                        import data.kubernetes.ingresses<br>
+                        import data.kubernetes.namespaces<br>
+                        # Kubernetes Admission Control Invariants<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        certs [ i ].Subject.Organization[ j ] == data.host_info.apps [ _ ]<br>
+                        certs [ i ].Subject.OrganizationalUnit [ j ] == “dev”<br>
+                        }<br>
+                        # Check the certificate’s validity period at the time of login.<br>
+                        time.now_ns() >= certs [ i ].NotBefore<br>
+                        time.now_ns() <= certs [ i ].NotAfter<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        contains (list, item) {<br>
+                        list [ _ ] = item<br>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tabs-33" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p>
+                        # Kubernetes Admission Control Invariants<br>
+                        package kubernetes.invariants<br>
+                        import data.kubernetes.ingresses<br>
+                        import data.kubernetes.namespaces<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        - filters:<br>
+                        - name: envoy.http_connection_manager<br>
+                        typed_config:<br>
+                        “@type”: type.googleapis.com/<br>
+                        envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager<br>
+                        codec_type: auto<br>
+                        stat_prefix: ingress_http<br>
+                        route_config:<br>
+                        name: local_route<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        stat_prefix: ext_authz<br>
+                        timeout: 0.5s<br>
+                        - name: envoy.router<br>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tabs-44" role="tabpanel">
+                    <div class="col-12 whitebox">
+                      <p>
+                        token = { “valid”: valid, “payload”: payload } { <br>
+                        [ _, encoded ] := split ( http_request.headers.authorization, “ “ )<br>
+                        [valid, _ , payload] := io.jwt.decode_verify ( encoded, { “secret”:<br>
+                        “secret” })<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        allow { <br>
+                        is_token_valid<br>
+                        action_allowed<br>
+                        }<br>
+                        is_token_valid {<br>
+                        token.valid<br>
+                        token.payload.nbf <= time.now_ns() < token.payload.exp<br>
+                      </p>
+                    </div>
+                    <div class="col-12 whitebox">
+                      <p>
+                        token.payload.role == “guest”<br>
+                        glob.match ( “/people*”, [], http_request.path )<br>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="declarative-policy-tabs-graphic-2"></div>
+  </section>
+
+  <section id="declarative-policy-tabs">
+    <div class="declarative-policy-tabs-graphic"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+          <p><span style="font-weight:600">Declarative.</span> Express policy in a high-level,
+            declarative language that promotes safe,
+            performant, fine-grained controls. Use a language
+            purpose-built for policy in a world where JSON is
+            pervasive. Iterate, traverse hierarchies, and apply
+            50+ built-ins like string manipulation and JWT
+            decoding to declare the policies you want enforced.</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 mt-3 mt-sm-0">
+          <p><span style="font-weight:600">Context-aware.</span> Leverage external information to
+            write the policies you really care about. Stop
+            inventing roles that represent complex relationships
+            that years down the road no one will understand.
+            Instead, write logic that adapts to the world around
+            it and attach that logic to the systems that need it.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="mt-5 text-center blue">
+            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">Kubernetes</a> - <a href="#">Envoy</a> - <a href="#">Terraform</a> - <a href="#">Kafka</a>
+                - <a href="">Ceph</a> - <a href="">SQL</a> - <a href="">Linux</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="curveImage">
+    <!-- <div class="curveImage-container"></div> -->
+    <img src="./images/curve.png">
+  </section>
+
+  <section id="architectural-flexibility">
+    <div class="architectural-flexibility-graphic-left"></div>
+    <div class="architectural-flexibility-graphic-right"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2>Architectural Flexibility</h2>
+          <div class="subText colorGray">Balance integration, availability, consistency</div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="directBox text-center">
+            <div class="pt-3 pb-3">
+              <h3>Daemon</h3>
+            </div>
+
+            <div class="service-circle">
+              <div class="service-text dark">
+                <h3>Service</h3>
+              </div>
+            </div>
+            <div class="service-graphics">
+              <img src="./images/Deployment-Options-3.png">
+              <div class="service-graphics-text">
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-3 space-left blackColor">Policy<br> (Rego)</div>
+                  <div class="col-3 space-right blackColor">Data<br> (JSON)</div>
+                  <div class="col-3"></div>
+                </div>
+                <div class="mt-5">
+                  <p>Deploy OPA as a separate process on the same
+                    host as your service. Integrate OPA by changing
+                    your service’s code, importing an OPA-enabled
+                    library, or using a network proxy integrated with</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 ">
+          <div class="directBox text-center">
+            <div class="pt-3 pb-3">
+              <h3>Library</h3>
+            </div>
+
+            <div class="service-mediumcircle">
+              <div class="service-subtext dark pt-5">
+                <h3>Service</h3>
+                <div class="service-smallCircle">
+                  <img src="./images/logo.png">
+                  <!-- <div class="service-innertext dark">
+                                <h3>Services</h3>
+                              </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="service-graphic">
+              <img src="./images/Deployment-Options-1.png">
+              <div class="service-graphics-text">
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-3 space-left blackColor">Policy<br> (Rego)</div>
+                  <div class="col-3 space-right blackColor">Data<br> (JSON)</div>
+                  <div class="col-3"></div>
+                </div>
+                <div class="mt-5">
+                  <p>Embed OPA into your service. Run OPA as a
+                    Go library, or compile policies into WASM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mt-5">
+          <div class="mt-5 text-center blue">
+            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">Daemon</a> - <a href="#">Library</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="curveImage">
+    <!-- <div class="curveImage-container"></div> -->
+    <img src="./images/curve-up.png">
+  </section>
+
+  <section id="policy-authoring">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2>Tools for Policy Authoring</h2>
+          <div class="subText">IDEs, Sharing, Profiling, Testing, Coverage</div>
+        </div>
+      </div>
+      <div class="row text-center center-align-content marginTopNegative">
+        <div class="col-12 col-sm-6 p-sm-0">
+          <div class="policy-sharing">
+            <img src="./images/tools-for-Policy-Authoring-1.png" class="img-fluid">
+            <h4>Rego Playground for Policy Sharing</h4>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 p-sm-0">
+          <div class="policy-sharing">
+            <img src="./images/tools-for-Policy-Authoring-2.png" class="img-fluid">
+            <h4>VS Code for Policy Authoring</h4>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 p-sm-0">
+          <div class="policy-sharing">
+            <img src="./images/tools-for-Policy-Authoring-3.png" class="img-fluid">
+            <h4>CLI and REPL for complete control</h4>
+          </div>
+        </div>
+        <div class="col-12 mt-3 policy-text">
+          <p>OPA embraces policy-as-code, complete with tools that help people use and understand the policies they put
+            in
+            place. Integrated development environments, testing, profiling, coverage, automated performance tuning, and
+            hot
+            reloading aren’t just things you need for programming--you need them for policy too, and OPA delivers.</p>
+        </div>
+        <div class="col-12 mt-5">
+          <div class="text-center blue">
+            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">VScode</a> - <a href="#">Rego Playground</a> - <a href="#">General
+                  Tooling</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer" class="mt-sm-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-text">
+            Open Policy Agent is a Cloud Native Computing Foundation incubating project.
+          </div>
+          <div class="footer-logo pb-4">
+            <img src="images/cloud-native-logo.png">
+          </div>
+          <div class="social-icon mb-4">
+            <ul>
+              <li><a href="#"><img src="./images/Footer-Icon-1.png"></a></li>
+              <li><a href="#"><img src="./images/Footer-Icon-2.png"></a></li>
+              <li><a href="#"><img src="./images/Footer-Icon-3.png"></a></li>
+              <li><a href="#"><img src="./images/Footer-Icon-4.png"></a></li>
+            </ul>
+          </div>
+          <div class="footer-bottom">
+            © 2019 Open Policy Agent contributors. Licensed under the Apache License, Version 2.0. For information about
+            contributing, see CONTRIBUTING.md.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
+
+  <script>
+      var tabsFive = document.getElementById("tabs-5");
+      var tabFive = document.getElementById("tab-5");
+      var tabsSix = document.getElementById("tabs-6");
+      var tabSix = document.getElementById("tab-6");
+
+      tabsFive.addEventListener('click', ()=>{
+          this.tabFive.classList.add("toshow");
+          this.tabFive.style.display = "block";
+          this.tabSix.style.display = "none";
+      });
+
+      tabsSix.addEventListener('click', ()=>{
+          this.tabSix.classList.add("toshow");
+          this.tabFive.style.display = 'none';
+          this.tabSix.style.display = "block";
+      });
+
+  </script>
+
+
+
+
+  </body>
+
+  </html>
 {{ end }}
