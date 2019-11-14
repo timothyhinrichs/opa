@@ -8,9 +8,7 @@ set -xe
 npm run install-deps
 
 # Bundle web js and css if needed
-if ! [ -d "dist/" ]; then
-  npm run --silent bundle-web
-fi
+npm run --silent bundle-web
 
 # Copy everything over
 # NOTE: Update package.json, src/constants.js, and static/opening-in-playground.html with any changes.
