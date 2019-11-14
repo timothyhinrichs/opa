@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -19,14 +19,14 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
     line-height: 1;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-    
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
 }
 ol, ul {
 	list-style: none;
@@ -57,7 +57,7 @@ html, body{
 
 #navigation{
     width: 100%;
-    min-height: 10px;    
+    min-height: 10px;
     position: relative;
     z-index: 999;
 }
@@ -70,7 +70,7 @@ html, body{
 }
 
 .bg img{
-    width: 100%;    
+    width: 100%;
     position: relative;
     margin-top: -240px;
 }
@@ -118,7 +118,7 @@ html, body{
 }
 
 .banner-content {
-    position: relative;    
+    position: relative;
     z-index: 99;
     color: #fff;
     font-size: 39px !important;
@@ -144,7 +144,7 @@ html, body{
 
 .navbar-dark .navbar-nav .nav-link{
     color: #fff !important;
-    
+
 }
 
 .navbar-dark .navbar-nav .nav-item{
@@ -196,7 +196,7 @@ a{
 
 
 .btn-primary:hover{
-    background: linear-gradient(#46ccd9, #49a1e2);    
+    background: linear-gradient(#46ccd9, #49a1e2);
 }
 
 .styraText {
@@ -252,7 +252,7 @@ a{
     min-height: 100px;
     background: #f8f8f8;
     margin-top: -7px;
-    padding-bottom: 50px;   
+    padding-bottom: 50px;
 }
 
 .gray-top-image img{
@@ -327,8 +327,8 @@ h3{
     height: 660px;
     background-repeat: no-repeat;
     background-size: cover;
-    
-    
+
+
 }
 
 .tab-innerContainer p{
@@ -340,7 +340,7 @@ h3{
     min-height: 100px;
     position: relative;
     z-index: 9;
-    
+
 }
 
 .btn-primary span{
@@ -371,13 +371,13 @@ h3{
     border: none !important;
     padding: 15px 20px;
     line-height: 40px;
-    display: inline-flex;    
+    display: inline-flex;
 }
 .verticle-tabs{
     position: absolute;
     left: -270px;
     top: 170px;
-} 
+}
 
 .verticle-tabs  .nav-tabs .nav-link.active {
     color: #fff !important;
@@ -390,7 +390,7 @@ h3{
     line-height: 27px;
     margin: 10px 0px;
     cursor: pointer;
-    
+
 
 }
 
@@ -426,8 +426,8 @@ h3{
     position: relative;
     border-radius: 20px;
     padding: 25px;
-    margin-bottom: 15px;   
-    
+    margin-bottom: 15px;
+
 }
 
 /* #tableOne{
@@ -462,7 +462,7 @@ h3{
     display: inline-flex;
     line-height: 40px;
     box-shadow: 1px 1px 8px rgba(51, 51, 51, 0.25);
-   
+
 }
 
 .nav-tabs .nav-width{
@@ -472,19 +472,19 @@ h3{
 
 .envoyLogo{
     width: 55px !important;
-} 
+}
 
 #curveImage{
     width: 100%;
     min-height: 50px;
     background: #fff;
     padding: 70px 0px;
-} 
+}
 
 
 #curveImage img{
-    width: 100%; 
-    background-repeat: no-repeat;    
+    width: 100%;
+    background-repeat: no-repeat;
 }
 
 #architectural-flexibility{
@@ -523,7 +523,7 @@ h3{
 .directBox{
     width: 100%;
     min-height: 100px;
-    background:#fff; 
+    background:#fff;
     position: relative;
 }
 
@@ -624,7 +624,7 @@ h3{
 
 .space-left{
     margin-left: 18px;
-    
+
 }
 .space-right{
     margin-left: -30px;
@@ -667,7 +667,7 @@ h4{
 .footer-text{
     font-size: 22px;
     color: #fff;
-    padding-bottom: 20px;   
+    padding-bottom: 20px;
 }
 
 .footer-logo img{
@@ -675,7 +675,7 @@ h4{
 }
 
 .social-icon ul li{
-    display: inline-block;    
+    display: inline-block;
 }
 
 .social-icon ul li img{
@@ -684,7 +684,7 @@ h4{
 
 .footer-bottom {
     font-size: 14px;
-    color: #fff;    
+    color: #fff;
 }
 
 .marginTopNegative {
@@ -702,8 +702,8 @@ h4{
 
 
 @media screen and (min-width:1201px) and (max-width:1400px){
-    
-}    
+
+}
 
 @media screen and (min-width:993px) and (max-width:1200px){
     .nav-tabs .nav-link{
@@ -727,14 +727,14 @@ h4{
         width: 20px;
         height: 20px;
     }
-    
-    
-    
-    
 
-    
 
-    
+
+
+
+
+
+
 }
 
 @media screen and (min-width:992px) and (max-width:1024px){
@@ -747,7 +747,7 @@ h4{
         margin-top: -180px !important;
     }
     .boxTop-heading{
-        top:53%;        
+        top:53%;
     }
 
     .boxTop h3{
@@ -862,7 +862,7 @@ h4{
     .boxTop h3{
         line-height: 17px;
     }
-    
+
 }
 
 @media screen and (max-width: 575px){
@@ -887,7 +887,7 @@ h4{
             top: 0;
             transform: none;
         }
-    
+
 
 
 }
@@ -956,7 +956,7 @@ h4{
     }
 
     .banner-subcontent{
-       
+
         text-align: center;
         font-size: 18px !important;
     }
@@ -989,7 +989,7 @@ h4{
     .mobile-view-Banner img{
         display: block !important;
     }
-    
+
     .banner-content{
         font-size: 22px !important;
         padding-top: 100px;
@@ -1000,10 +1000,10 @@ h4{
 
 .policy-text p{
     width: 85%;
- 
+
 }
     .about-text{
-        width: 100%;        
+        width: 100%;
     }
 
 
@@ -1037,7 +1037,7 @@ h4{
     }
 
     .whitebox{
-        overflow: auto;  
+        overflow: auto;
     }
 
     .architectural-flexibility-graphic-left, .declarative-policy-tabs-graphic, .architectural-flexibility-graphic-right{
@@ -1057,7 +1057,7 @@ h4{
     .verticle-tabs .nav-tabs .nav-link.active{
         line-height: 22px !important;
     }
-    
+
     .nav-tabs .nav-width {
         width: 139px;
         max-width: 139px;
@@ -1067,7 +1067,7 @@ h4{
         margin-top: 15px;
     }
 
-    
+
 
     .bg img{
         display: none;
@@ -1084,7 +1084,7 @@ h4{
     }
 
     #homebackground .banner-content{
-        font-size: 29px;        
+        font-size: 29px;
         text-align: center;
         position: relative;
         z-index: 1;
@@ -1144,9 +1144,9 @@ h4{
     .col-lg-2{
         max-width:20% !important;
         width:20% !important;
-        flex: 0 0 20% !important; 
+        flex: 0 0 20% !important;
     }
-    
+
 }
 
 
