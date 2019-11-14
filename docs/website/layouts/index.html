@@ -246,10 +246,9 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="tabs-1" role="tabpanel">
                     <div class="tab-innerContainer">
-                      <div class="col-12 whitebox">
-                        <div class="highlight">
+                      <div class="col-12 highlight">
                           <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-                            <code class="language-live:kubernetes_trusted_registry:input:hidden" data-lang="live:kubernetes_trusted_registry:input:hidden">
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:input:hidden">
 {
     "apiVersion": "admission.k8s.io/v1beta1",
     "kind": "AdmissionReview",
@@ -280,11 +279,10 @@
 }
                             </code>
                           </pre>
-                        </div>
-                        <div class="highlight">
+                      </div>
+                      <div class="highlight">
                           <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-                            <code class="language-live:kubernetes_trusted_registry:module" data-lang="live:kubernetes_trusted_registry:module">
-package kubernetes.admission
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:module:openable">package kubernetes.admission
 
 deny[msg] {
     input.request.kind.kind == "Pod"
@@ -294,15 +292,12 @@ deny[msg] {
 }
                             </code>
                           </pre>
-                        </div>
                       </div>
-                      <div class="col-12 whitebox">
-                        <div class="highlight">
+                      <div class="highlight">
                           <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-                            <code class="language-live:kubernetes_trusted_registry:output" data-lang="live:kubernetes_trusted_registry:output">
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:output:openable">
                             </code>
                           </pre>
-                        </div>
                       </div>
                     </div>
 

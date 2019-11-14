@@ -232,6 +232,10 @@ function enliven($) {
   if (!body) {
     throw new Error('no body element')
   }
-  head.append(`<link rel="stylesheet" href="${CSS_BUNDLE_BATH}">`)
+
+  // Add to beginning of head to allow the page to override style in other
+  // css sources later on in <head>.
+  head.prepend(`<link rel="stylesheet" href="${CSS_BUNDLE_BATH}">`)
+
   body.append(`<script src="${JS_BUNDLE_PATH}"></script>`)
 }
