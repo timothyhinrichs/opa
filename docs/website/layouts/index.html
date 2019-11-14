@@ -244,26 +244,62 @@
                   <div class="tab-pane active" id="tabs-1" role="tabpanel">
                     <div class="tab-innerContainer">
                       <div class="col-12 whitebox">
-                        <p># Kubernetes Admission Control Invariants</p><br>
-                        <p>package kubernetes.invariants</p><br>
-                        <p>import data.kubernetes.ingresses</p>
-                        <p>import data.kubernetes.namespaces</p>
+                        <div class="highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live:kubernetes_trusted_registry:input:hidden" data-lang="live:kubernetes_trusted_registry:input:hidden">
+{
+    "apiVersion": "admission.k8s.io/v1beta1",
+    "kind": "AdmissionReview",
+    "request": {
+        "kind": {
+            "group": "",
+            "kind": "Pod",
+            "version": "v1"
+        },
+        "object": {
+            "metadata": {
+                "name": "myapp"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "nginx",
+                        "name": "nginx-frontend"
+                    },
+                    {
+                        "image": "mysql",
+                        "name": "mysql-backend"
+                    }
+                ]
+            }
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live:kubernetes_trusted_registry:module" data-lang="live:kubernetes_trusted_registry:module">
+package kubernetes.admission
+
+deny[msg] {
+    input.request.kind.kind == "Pod"
+    image := input.request.object.spec.containers[_].image
+    not startswith(image, "hooli.com/")
+    msg := sprintf("image '%v' comes from untrusted registry", [image])
+}
+                            </code>
+                          </pre>
+                        </div>
                       </div>
                       <div class="col-12 whitebox">
-                        <p># Generates a list of non-compliant ingresses identified by `namespace`</p>
-                        <p># and ingress specification `name`.</p>
-                        <p>violations[{<br>
-                          “namespace”: namespace,<br>
-                          “name”: name,<br>
-                          “message”: “ingress hostname must match whitelist”<br>
-                          }] {<br>
-                          ingress := ingresses[ namespace ][ name ]<br>
-                          host := ingress.spec.rules[ _ ].host<br>
-                          not contains( whitelist [ namespace ], host)</p>
-                      </div>
-                      <div class="col-12 whitebox">
-                        <p>contains(list, item) {<br>
-                          list [ _ ] = item</p>
+                        <div class="highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live:kubernetes_trusted_registry:output" data-lang="live:kubernetes_trusted_registry:output">
+                            </code>
+                          </pre>
+                        </div>
                       </div>
                     </div>
 
