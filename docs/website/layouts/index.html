@@ -11,10 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>Open Policy Agent</title>
+    <title>OPA </title>
     <link rel="stylesheet" href="./css/home.css">
   </head>
 
@@ -23,7 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container">
 
-        <a class="navbar-brand" href="#top"><img src="./images/logo-white.png" class="img-fluid"></a>
+        <a class="navbar-brand" href="#top"><img src="./img/logo-white.png" class="img-fluid"></a>
         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
                 data-target="#navb" aria-expanded="false">
           <span class="navbar-toggler-icon"></span>
@@ -41,6 +40,9 @@
               <a class="nav-link" href="./docs/latest/get-started/">Tutorials </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#">Integrations </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="./support">Support</a>
             </li>
             <li class="nav-item">
@@ -54,9 +56,9 @@
   </div>
 
   <!-- <section id="homebackground">
-      <div class="bg"><img src="./images/homebg.png"></div>
-      <div class="cloud-top"><img src="./images/cloudAll.png"></div>
-      <div class="homepageconterimage"><img src="./images/homeBanner.png"></div>
+      <div class="bg"><img src="./img/homebg.png"></div>
+      <div class="cloud-top"><img src="./img/cloudAll.png"></div>
+      <div class="homepageconterimage"><img src="./img/homeBanner.png"></div>
     </section> -->
 
   <section id="homebackground">
@@ -64,7 +66,8 @@
     <div class="bg">
       <div class="banner-content">Policy-based control for cloud native environments</div>
       <div class="banner-subcontent">Flexible, fine-grained control for administrators across the stack</div>
-      <img src="./images/banner-image.png">
+      <img src="./img/banner-image.png">
+      <div class="mobile-view-Banner"><img src="./img/opa-mobile-banner_mobile.png"></div>
     </div>
   </section>
 
@@ -87,11 +90,11 @@
           </div>
           <div class="mt-5 text-center blue">
             <button class="btn btn-primary"><a><span>Learn More:</span></a> <a href="./docs/latest/kubernetes-introduction/">Kubernetes</a> - <a href="./docs/latest/envoy-authorization/">Envoy</a> - <a href="./docs/latest/terraform/">Terraform</a> - <a href="./docs/latest/kafka-authorization/">Kafka</a>
-              - <a href="https://docs.ceph.com/docs/master/radosgw/opa/">Ceph</a> - <a href="https://blog.openpolicyagent.org/write-policy-in-opa-enforce-policy-in-sql-d9d24db93bf4">SQL</a> - <a href="./docs/latest/ssh-and-sudo-authorization/">Linux</a></button>
+              - <a href="https://blog.openpolicyagent.org/write-policy-in-opa-enforce-policy-in-sql-d9d24db93bf4">SQL</a> - <a href="./docs/latest/ssh-and-sudo-authorization/">Linux</a></button>
           </div>
           <div class="mt-5 text-center">
             <div class="styraText">
-              <p>Created By</p><span> <img src="./images/styra-logo.jpg" class="img-fluid"></span>
+              <p>Created By</p><span> <img src="./img/styra-logo.jpg" class="img-fluid"></span>
             </div>
           </div>
         </div>
@@ -180,7 +183,7 @@
 
   <section id="gray">
 
-    <div class="gray-top-image"><img src="./images/gray-top.png"></div>
+    <div class="gray-top-image"><img src="./img/gray-top.png"></div>
     <section id="declarative-policy">
       <div class="container">
         <div class="row">
@@ -220,22 +223,22 @@
                 <ul class="nav nav-tabs" role="tablist" id="tableOne">
                   <li class="nav-item">
                     <a class="nav-link nav-width active" data-toggle="tab" href="#tabs-1"  role="tab">
-                      <img src="./images/policyIcon-1.png">
+                      <img src="./img/policyIcon-1.png">
                       Kubernetes</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-2"  role="tab">
-                      <img src="./images/policyIcon-2.png" class="envoyLogo">
+                      <img src="./img/policyIcon-2.png" class="envoyLogo">
                       Envoy</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-3" role="tab">
-                      <img src="./images/policyIcon-3.png">
+                      <img src="./img/policyIcon-3.png">
                       Terraform</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-4" role="tab">
-                      <img src="./images/policyIcon-4.png">
+                      <img src="./img/policyIcon-4.png">
                       Application</a>
                   </li>
                 </ul>
@@ -392,22 +395,22 @@ deny[msg] {
                 <ul class="nav nav-tabs" role="tablist" id="tableOne">
                   <li class="nav-item">
                     <a class="nav-link nav-width active"  data-toggle="tab" href="#tabs-11" role="tab">
-                      <img src="./images/policyIcon-1.png">
+                      <img src="./img/policyIcon-1.png">
                       Kubernetes</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-22" role="tab">
-                      <img src="./images/policyIcon-2.png" class="envoyLogo">
+                      <img src="./img/policyIcon-2.png" class="envoyLogo">
                       Envoy</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-33" role="tab">
-                      <img src="./images/policyIcon-3.png">
+                      <img src="./img/policyIcon-3.png">
                       Terraform</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-width" data-toggle="tab" href="#tabs-44" role="tab">
-                      <img src="./images/policyIcon-4.png">
+                      <img src="./img/policyIcon-4.png">
                       Application</a>
                   </li>
                 </ul>
@@ -561,7 +564,7 @@ deny[msg] {
         <div class="col-12">
           <div class="mt-5 text-center blue">
             <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">Kubernetes</a> - <a href="#">Envoy</a> - <a href="#">Terraform</a> - <a href="#">Kafka</a>
-                - <a href="">Ceph</a> - <a href="">SQL</a> - <a href="">Linux</a></button>
+                 - <a href="">SQL</a> - <a href="">Linux</a></button>
           </div>
         </div>
       </div>
@@ -570,7 +573,7 @@ deny[msg] {
 
   <section id="curveImage">
     <!-- <div class="curveImage-container"></div> -->
-    <img src="./images/curve.png">
+    <img src="./img/curve.png">
   </section>
 
   <section id="architectural-flexibility">
@@ -587,7 +590,7 @@ deny[msg] {
 
 
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-12 col-md-6">
           <div class="directBox text-center">
             <div class="pt-3 pb-3">
               <h3>Daemon</h3>
@@ -599,7 +602,7 @@ deny[msg] {
               </div>
             </div>
             <div class="service-graphics">
-              <img src="./images/Deployment-Options-3.png">
+              <img src="./img/Deployment-Options-3.png">
               <div class="service-graphics-text">
                 <div class="row">
                   <div class="col-3"></div>
@@ -618,7 +621,7 @@ deny[msg] {
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 ">
+        <div class="col-12 col-sm-12  col-md-6 ">
           <div class="directBox text-center">
             <div class="pt-3 pb-3">
               <h3>Library</h3>
@@ -628,7 +631,7 @@ deny[msg] {
               <div class="service-subtext dark pt-5">
                 <h3>Service</h3>
                 <div class="service-smallCircle">
-                  <img src="./images/logo.png">
+                  <img src="./img/logo.png">
                   <!-- <div class="service-innertext dark">
                                 <h3>Services</h3>
                               </div> -->
@@ -636,7 +639,7 @@ deny[msg] {
               </div>
             </div>
             <div class="service-graphic">
-              <img src="./images/Deployment-Options-1.png">
+              <img src="./img/Deployment-Options-1.png">
               <div class="service-graphics-text">
                 <div class="row">
                   <div class="col-3"></div>
@@ -666,7 +669,7 @@ deny[msg] {
 
   <section id="curveImage">
     <!-- <div class="curveImage-container"></div> -->
-    <img src="./images/curve-up.png">
+    <img src="./img/curve-up.png">
   </section>
 
   <section id="policy-authoring">
@@ -680,19 +683,19 @@ deny[msg] {
       <div class="row text-center center-align-content marginTopNegative">
         <div class="col-12 col-sm-6 p-sm-0">
           <div class="policy-sharing">
-            <img src="./images/tools-for-Policy-Authoring-1.png" class="img-fluid">
+            <img src="./img/tools-for-Policy-Authoring-1.png" class="img-fluid">
             <h4>Rego Playground for Policy Sharing</h4>
           </div>
         </div>
         <div class="col-12 col-sm-6 p-sm-0">
           <div class="policy-sharing">
-            <img src="./images/tools-for-Policy-Authoring-2.png" class="img-fluid">
+            <img src="./img/tools-for-Policy-Authoring-2.png" class="img-fluid">
             <h4>VS Code for Policy Authoring</h4>
           </div>
         </div>
         <div class="col-12 col-sm-6 p-sm-0">
           <div class="policy-sharing">
-            <img src="./images/tools-for-Policy-Authoring-3.png" class="img-fluid">
+            <img src="./img/tools-for-Policy-Authoring-3.png" class="img-fluid">
             <h4>CLI and REPL for complete control</h4>
           </div>
         </div>
@@ -721,14 +724,14 @@ deny[msg] {
             Open Policy Agent is a Cloud Native Computing Foundation incubating project.
           </div>
           <div class="footer-logo pb-4">
-            <img src="images/cloud-native-logo.png">
+            <img src="img/cloud-native-logo.png">
           </div>
           <div class="social-icon mb-4">
             <ul>
-              <li><a href="https://blog.openpolicyagent.org/"><img src="./images/Footer-Icon-1.png"></a></li>
-              <li><a href="https://twitter.com/openpolicyagent"><img src="./images/Footer-Icon-2.png"></a></li>
-              <li><a href="https://slack.openpolicyagent.org/"><img src="./images/Footer-Icon-3.png"></a></li>
-              <li><a href="https://github.com/open-policy-agent/opa"><img src="./images/Footer-Icon-4.png"></a></li>
+              <li><a href="https://blog.openpolicyagent.org/"><img src="./img/Footer-Icon-1.png"></a></li>
+              <li><a href="https://twitter.com/openpolicyagent"><img src="./img/Footer-Icon-2.png"></a></li>
+              <li><a href="https://slack.openpolicyagent.org/"><img src="./img/Footer-Icon-3.png"></a></li>
+              <li><a href="https://github.com/open-policy-agent/opa"><img src="./img/Footer-Icon-4.png"></a></li>
             </ul>
           </div>
           <div class="footer-bottom">

@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     
 }
 ol, ul {
@@ -758,7 +759,6 @@ h4{
         flex: 0 0 20%;
         max-width: 20%;
     }
-
     .nav-tabs{
         margin-left: 15px;
     }
@@ -784,10 +784,112 @@ h4{
     }
 }
 
+@media screen and (min-width: 768px){
+    .mobile-view-Banner img{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .bg img {
+        margin-top: -270px;
+    }
+}
+
+@media screen and (min-width:350px) and (max-width:400px){
+    .bg img {
+        margin-top: -308px;
+    }
+}
+
+@media screen and (min-width:401px) and (max-width:450px){
+    .bg img {
+        margin-top: -340px;
+    }
+}
+
+
+@media screen and (min-width:451px) and (max-width:500px){
+    .bg img {
+        margin-top: -400px;
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:550px){
+    .bg img {
+        margin-top: -430px;
+    }
+}
+@media screen and (min-width:551px) and (max-width:575px){
+    .bg img {
+        margin-top: -445px;
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:600px) {
+    .bg img {
+        margin-top: -475px;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:650px) {
+    .bg img {
+        margin-top: -475px;
+    }
+}
+
+@media screen and (min-width:651px) and (max-width:700px) {
+    .bg img {
+        margin-top: -555px;
+    }
+}
+
+@media screen and (min-width:701px) and (max-width:750px) {
+    .bg img {
+        margin-top: -605px;
+    }
+}
+
+@media screen and (min-width:751px) and (max-width:767px) {
+    .bg img {
+        margin-top: -655px;
+    }
+}
+
+
+
 @media screen and (min-width:575px) and (max-width:767px){
     .boxTop h3{
         line-height: 17px;
     }
+    
+}
+
+@media screen and (max-width: 575px){
+
+    /* .bg img{
+        margin-top: -260px;
+    } */
+    .boxBottom, .boxTop {
+        width:280px;
+        margin: auto;
+    }
+        .boxTop{
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .boxTop-heading{
+            position: relative;
+            padding: 30px 15px;
+            text-align: center;
+            left: 0;
+            top: 0;
+            transform: none;
+        }
+    
+
+
 }
 
 @media screen and (min-width:1024px) and (max-width:1200px){
@@ -874,6 +976,27 @@ h4{
 }
 
 @media screen and (max-width:767px){
+    #policy-authoring{
+        padding: 0px 0px 50px;
+    }
+    #declarative-policy-tabs{
+        padding-bottom: 0px;
+    }
+
+    #about{
+        padding: 70px 0px 0px;
+    }
+    .mobile-view-Banner img{
+        display: block !important;
+    }
+    
+    .banner-content{
+        font-size: 22px !important;
+        padding-top: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
+        line-height: 28px;
+    }
 
 .policy-text p{
     width: 85%;
@@ -950,11 +1073,11 @@ h4{
         display: none;
     }
 
-    #homebackground{
+    /* #homebackground{
         background: linear-gradient(#46ccd9, #49a1e2);
         overflow: auto;
         height: 100%;
-    }
+    } */
 
     .envoyLogo {
         width: 20px !important;
@@ -967,10 +1090,10 @@ h4{
         z-index: 1;
     }
     #homebackground .banner-subcontent{
-        
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 18px;
+        line-height: 24px;
         text-align: center;
+        padding: 0px 15px;
     }
 
     .navbar-brand img{
