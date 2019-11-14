@@ -75,11 +75,11 @@ async function processFile(path) {
 }
 
 // --- PROCESSING HELPERS ---
-// Based on a file's path containing /v[VERSION]/ or /edge/ returns the version string (e.g. '0.12.1' or 'edge'). Returns undefined if it can't find a version.
+// Based on a file's path containing /v[VERSION]/ or /edge/ returns the version string (e.g. '0.12.1' or 'edge'). Returns latest if it can't find a version.
 function getVersion(path) {
   const versionMatch = (new RegExp(`/(v[^/]*|${VERSION_EDGE}|${VERSION_LATEST})/`)).exec(filepath.resolve(path))
   if (!versionMatch) {
-    return // Not found.
+    return VERSION_LATEST
   }
 
   return versionMatch[1]
