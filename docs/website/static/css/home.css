@@ -646,7 +646,7 @@ h3{
 }
 
 .architectural-flexibility-graphic-left {
-    background-image: url(../images/arc-left.png);
+    background-image: url(../img/arc-left.png);
     position: absolute;
     left: -110px;
     top: 35%;
@@ -658,7 +658,7 @@ h3{
 }
 
 .architectural-flexibility-graphic-right {
-    background-image: url(../images/arc-right.png);
+    background-image: url(../img/arc-right.png);
     position: absolute;
     right: 0px;
     top: 18%;
