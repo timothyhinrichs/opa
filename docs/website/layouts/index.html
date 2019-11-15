@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./css/home.css">
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".navbar" data-offset="90">
   <div id="navigation">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container">
@@ -89,8 +89,9 @@
             </p>
           </div>
           <div class="mt-5 text-center blue">
-            <button class="btn btn-primary"><a><span>Learn More:</span></a> <a href="./docs/latest/kubernetes-introduction/">Kubernetes</a> - <a href="./docs/latest/envoy-authorization/">Envoy</a> - <a href="./docs/latest/terraform/">Terraform</a> - <a href="./docs/latest/kafka-authorization/">Kafka</a>
-              - <a href="https://blog.openpolicyagent.org/write-policy-in-opa-enforce-policy-in-sql-d9d24db93bf4">SQL</a> - <a href="./docs/latest/ssh-and-sudo-authorization/">Linux</a></button>
+             <button class="btn btn-primary"><a><span>Learn More:</span></a> <a href="./docs/latest/kubernetes-introduction/">Kubernetes</a> - <a
+                 href="./docs/latest/envoy-authorization/">Envoy</a> - <a href="./docs/latest/terraform/">Terraform</a> - <a href="./docs/latest/kafka-authorization/">Kafka</a>
+               - <a href="https://blog.openpolicyagent.org/write-policy-in-opa-enforce-policy-in-sql-d9d24db93bf4">SQL</a> - <a href="./docs/latest/ssh-and-sudo-authorization/">Linux</a></button>
           </div>
           <div class="mt-5 text-center">
             <div class="styraText">
@@ -191,11 +192,9 @@
             <h2>Declarative Policy</h2>
             <div class="subText">Context-aware, Expressive, Fast, Portable</div>
           </div>
-          <div class="mr-auto  col-md-4 col-lg-3"></div>
+          <!-- <div class="mr-auto  col-md-4 col-lg-3"></div>
           <div class="col-12  col-md-8  col-lg-9 mt-sm-5">
             <div class="declarative-table mt-5">
-              <!-- Tab panes -->
-
               <div class="verticle-tabs">
                 <ul class="nav nav-tabs flex-column" role="tablist">
                   <li class="nav-item">
@@ -524,7 +523,460 @@ deny[msg] {
                 </div>
               </div>
             </div>
+          </div> -->
+          <div class="col-12 mt-3 mt-sm-5">
+            <div class="row">
+              <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="declarativeBOx">
+                  <a href="#kubernetes">
+                    <div class="declarativeInnerBOx">
+                      <img src="./img/policyIcon-1.png" class="declarativeImage">
+                      <p class="declarativeText">Kubernetes</p>
+                    </div>
+
+                    <div class="downArrow">
+                      <img src="./img/downArrow.svg">
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="declarativeBOx envoy">
+                  <a href="#envoy">
+                    <div class="declarativeInnerBOx ">
+                      <img src="./img/policyIcon-2.png" class="declarativeImage">
+                      <p class="declarativeText">Envoy</p>
+                    </div>
+
+                    <div class="downArrow">
+                      <img src="./img/downArrow.svg">
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="declarativeBOx">
+                  <a href="#terraform">
+                    <div class="declarativeInnerBOx">
+                      <img src="./img/policyIcon-3.png" class="declarativeImage">
+                      <p class="declarativeText">Terraform</p>
+                    </div>
+
+                    <div class="downArrow">
+                      <img src="./img/downArrow.svg">
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="declarativeBOx">
+                  <a href="#application">
+                    <div class="declarativeInnerBOx">
+                      <img src="./img/policyIcon-4.png" class="declarativeImage">
+                      <p class="declarativeText">Application</p>
+                    </div>
+
+                    <div class="downArrow">
+                      <img src="./img/downArrow.svg">
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div class="col-12 mt-3 mt-sm-5" id="kubernetes">
+            <div class="declarative-policy-contentBox">
+              <div class="declarative-policy-contentBox-header">
+                <img src="./img/policyIcon-1.png" class="declarativeImage">
+                <p class="declarativeText">Kubernetes</p>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                  <div class="declarative-left">
+                      <div class="current"></div>
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                        role="tab" aria-controls="v-pills-home" aria-selected="true">allow superusers to do anything,
+                        and disallow admin operations from external network</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">prevent unauthorized users from seeing
+                        anything other than the home page</a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 ">
+                  <div class="declarative-right">
+                    <div class="tab-content" id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="col-12 highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:input:hidden">
+{
+    "apiVersion": "admission.k8s.io/v1beta1",
+    "kind": "AdmissionReview",
+    "request": {
+        "kind": {
+            "group": "",
+            "kind": "Pod",
+            "version": "v1"
+        },
+        "object": {
+            "metadata": {
+                "name": "myapp"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "nginx",
+                        "name": "nginx-frontend"
+                    },
+                    {
+                        "image": "mysql",
+                        "name": "mysql-backend"
+                    }
+                ]
+            }
+        }
+    }
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:module:openable">package kubernetes.admission
+
+deny[msg] {
+    input.request.kind.kind == "Pod"
+    image := input.request.object.spec.containers[_].image
+    not startswith(image, "hooli.com/")
+    msg := sprintf("image '%v' comes from untrusted registry", [image])
+}
+                            </code>
+                          </pre>
+                        </div>
+                        <div class="highlight">
+                          <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+                            <code class="language-live" data-lang="live:kubernetes_trusted_registry:output:openable">
+                            </code>
+                          </pre>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="col-12 whitebox" id="">
+                          <p>
+                            # Example Output:<br>
+                            #<br>
+                            # Conditions (1)<br>
+                            # ———————<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+
+                            # data.posts [ x ].owner = “bob”<br>
+                            # Conditions (2)<br>
+                            # ———————<br>
+                            # data.posts[ x ].department = “ops”<br>
+                            # data.posts[ x ].clearance_level &lt;= 3<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>Allow users to see posts from their own department<br>
+                            that they have sufficient clearance for.</p>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3 mt-sm-5" id="envoy">
+            <div class="declarative-policy-contentBox">
+              <div class="declarative-policy-contentBox-header">
+                <img src="./img/policyIcon-2.png" class="declarativeImage">
+                <p class="declarativeText declarativeEnvoy">Envoy</p>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                  <div class="declarative-left">
+
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-one"
+                        role="tab" aria-controls="v-pills-home" aria-selected="true">allow superusers to do anything,
+                        and disallow admin operations from external network</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-two" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">prevent unauthorized users from seeing
+                        anything other than the home page</a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                  <div class="declarative-right">
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                      <div class="tab-pane fade show active" id="v-pills-one" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="col-12 whitebox">
+                          <p># HTTP API Authorization<br>
+                            package acmecorp.authz<br>
+                            default allow = false
+                          </p>
+                        </div>
+
+                        <div class="col-12 whitebox">
+                          <p>
+                            # Allow people to read their own salaries.<br>
+                            allow {<br>
+                            input.method = “GET”<br>
+                            input.path = [ “salaries”, employee_id ]<br>
+                            input.user = employee_id<br>
+                            }<br>
+                            # Also allow managers to read the salaries of people they manage.<br>
+                            allow {<br>
+                            input.method = “GET”<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>input.path = [ “salaries”, employee_id ]<br>
+                            input.user = data.manager_of [ employee_id ]</p>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-two" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="col-12 whitebox">
+                          <p>
+                            package kubernetes.invariants<br>
+                            import data.kubernetes.ingresses<br>
+                            import data.kubernetes.namespaces<br>
+                            # Kubernetes Admission Control Invariants<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                            certs [ i ].Subject.Organization[ j ] == data.host_info.apps [ _ ]<br>
+                            certs [ i ].Subject.OrganizationalUnit [ j ] == “dev”<br>
+                            }<br>
+                            # Check the certificate’s validity period at the time of login.<br>
+                            time.now_ns() &gt;= certs [ i ].NotBefore<br>
+                            time.now_ns() &lt;= certs [ i ].NotAfter<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                            contains (list, item) {<br>
+                            list [ _ ] = item<br>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 mt-3 mt-sm-5" id="terraform">
+            <div class="declarative-policy-contentBox">
+              <div class="declarative-policy-contentBox-header">
+                <img src="./img/policyIcon-3.png" class="declarativeImage">
+                <p class="declarativeText">Terraform</p>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                  <div class="declarative-left">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-three"
+                        role="tab" aria-controls="v-pills-home" aria-selected="true">allow superusers to do anything,
+                        and disallow admin operations from external network</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-four" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">prevent unauthorized users from seeing
+                        anything other than the home page</a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                  <div class="declarative-right">
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                      <div class="tab-pane fade show active" id="v-pills-three" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="col-12 whitebox">
+                          <p>
+                            # Fine-Grained SSH Authorization<br>
+                            package ssh.fine_grained<br>
+                            # Allow users in the “dev” organization to SSH into hosts if they
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                            # possess a certificate proving they are assigned to an application<br>
+                            # running on the host.<br>
+                            allow {<br>
+                            # Extract the X.509 certificate provided in the policy query.<br>
+                            certs := crypto.x509.parse_certificates(input.certificates)<br>
+                            # Check that the user is part of the “dev” organization for an app<br>
+                            # running on this host.<br>
+                            certs[ i ].Subject.Organization[ j ] == data.host_info.apps[ _ ]<br>
+                            certs[ i ].Subject.OrganizationalUnit[ j ] == “dev”<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                            time.now_ns() &gt;= certs[ i ].NotBefore<br>
+                            time.now_ns() &lt;= certs[ i ].NotAfter<br>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-four" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="col-12 whitebox">
+                          <p>
+                              # Kubernetes Admission Control Invariants<br>
+                              package kubernetes.invariants<br>
+                              import data.kubernetes.ingresses<br>
+                              import data.kubernetes.namespaces<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              - filters:<br>
+                              - name: envoy.http_connection_manager<br>
+                              typed_config:<br>
+                              “@type”: type.googleapis.com/<br>
+                              envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager<br>
+                              codec_type: auto<br>
+                              stat_prefix: ingress_http<br>
+                              route_config:<br>
+                              name: local_route<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              stat_prefix: ext_authz<br>
+                              timeout: 0.5s<br>
+                              - name: envoy.router<br>
+                          </p>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3 mt-sm-5" id="application">
+            <div class="declarative-policy-contentBox">
+              <div class="declarative-policy-contentBox-header">
+                <img src="./img/policyIcon-4.png" class="declarativeImage">
+                <p class="declarativeText">Application</p>
+              </div>
+              <div class="row">
+                <div class="col-12  col-sm-12 col-md-12 col-lg-4">
+                  <div class="declarative-left">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-five"
+                        role="tab" aria-controls="v-pills-home" aria-selected="true">allow superusers to do anything,
+                        and disallow admin operations from external network</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-six" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">prevent unauthorized users from seeing
+                        anything other than the home page</a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12  col-sm-12 col-md-12 col-lg-8">
+                  <div class="declarative-right">
+                    <div class="tab-content" id="v-pills-tabContent">
+
+
+                      <div class="tab-pane fade show active" id="v-pills-five" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="col-12 whitebox">
+                          <p># Partial Evaluation<br>
+                            package app.filtering<br>
+                            # ——————————————————————————————————<br>
+                            # Data Filtering<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              # Allow users to see their own posts.<br>
+                              posts [ post ] {<br>
+                              post := data.posts [ _ ] <br>
+                              post.owner = input.subject.name<br>
+                              }<br>
+                              # Allow users to see posts from their own department<br>
+                              # that they have sufficient clearance for.<br>
+                              posts[ post ] {<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              post := data.posts [ _ ]<br>
+                              post.department = input.subject.department<br>
+                              post.security_level &lt;= input.subject.clearance_level<br>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-six" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="col-12 whitebox">
+                          <p>
+                              token = { “valid”: valid, “payload”: payload } { <br>
+                                [ _, encoded ] := split ( http_request.headers.authorization, “ “ )<br>
+                                [valid, _ , payload] := io.jwt.decode_verify ( encoded, { “secret”:<br>
+                                “secret” })<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              allow { <br>
+                                is_token_valid<br>
+                                action_allowed<br>
+                                }<br>
+                                is_token_valid {<br>
+                                token.valid<br>
+                                token.payload.nbf &lt;= time.now_ns() &lt; token.payload.exp<br>
+                          </p>
+                        </div>
+                        <div class="col-12 whitebox">
+                          <p>
+                              token.payload.role == “guest”<br>
+                              glob.match ( “/people*”, [], http_request.path )<br>
+                          </p>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -558,8 +1010,9 @@ deny[msg] {
       <div class="row">
         <div class="col-12">
           <div class="mt-5 text-center blue">
-            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">Kubernetes</a> - <a href="#">Envoy</a> - <a href="#">Terraform</a> - <a href="#">Kafka</a>
-                 - <a href="">SQL</a> - <a href="">Linux</a></button>
+            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="#">Kubernetes</a> - <a
+                  href="#">Envoy</a> - <a href="#">Terraform</a> - <a href="#">Kafka</a>
+                - <a href="">SQL</a> - <a href="">Linux</a></button>
           </div>
         </div>
       </div>
@@ -655,7 +1108,8 @@ deny[msg] {
       <div class="row">
         <div class="col-12 mt-5">
           <div class="mt-5 text-center blue">
-            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="./docs/latest/deployments/">Daemon</a> - <a href="./docs/latest/integration/#integrating-with-the-go-api">Library</a></button>
+            <button class="btn btn-primary"><a><span>Learn More:</span></a> <a href="./docs/latest/deployments/">Daemon</a> - <a
+                   href="./docs/latest/integration/#integrating-with-the-go-api">Library</a></button>
           </div>
         </div>
       </div>
@@ -676,19 +1130,19 @@ deny[msg] {
         </div>
       </div>
       <div class="row text-center center-align-content marginTopNegative">
-        <div class="col-12 col-sm-6 p-sm-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6  p-sm-0">
           <div class="policy-sharing">
             <img src="./img/tools-for-Policy-Authoring-1.png" class="img-fluid">
             <h4>Rego Playground for Policy Sharing</h4>
           </div>
         </div>
-        <div class="col-12 col-sm-6 p-sm-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 p-sm-0">
           <div class="policy-sharing">
             <img src="./img/tools-for-Policy-Authoring-2.png" class="img-fluid">
             <h4>VS Code for Policy Authoring</h4>
           </div>
         </div>
-        <div class="col-12 col-sm-6 p-sm-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 p-sm-0">
           <div class="policy-sharing">
             <img src="./img/tools-for-Policy-Authoring-3.png" class="img-fluid">
             <h4>CLI and REPL for complete control</h4>
@@ -703,8 +1157,9 @@ deny[msg] {
         </div>
         <div class="col-12 mt-5">
           <div class="text-center blue">
-            <button class="btn btn-primary"><a><span>Learn More:</span> <a href="https://marketplace.visualstudio.com/items?itemName=tsandall.opa">VScode</a> - <a href="https://play.openpolicyagent.org/">Rego Playground</a> - <a href="./docs/latest/#running-opa">General
-                  Tooling</a></button>
+            <button class="btn btn-primary"><a><span>Learn More:</span></a>
+              <a href="https://marketplace.visualstudio.com/items?itemName=tsandall.opa">VScode</a> - <a href="https://play.openpolicyagent.org/">Rego
+                Playground</a> - <a href="./docs/latest/#running-opa">General Tooling</a></button>
           </div>
         </div>
       </div>
@@ -760,28 +1215,34 @@ deny[msg] {
           integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
           crossorigin="anonymous"></script>
 
-  <script>
-      var tabsFive = document.getElementById("tabs-5");
-      var tabFive = document.getElementById("tab-5");
-      var tabsSix = document.getElementById("tabs-6");
-      var tabSix = document.getElementById("tab-6");
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.0.3/smooth-scroll.min.js"></script>
+     <script>
+       $(function () {
+         var offset = 50;
+         var scroll = new SmoothScroll('a[href*="#"]', {
+           speed: 500, offset
+         });
+       });
+     </script>
 
-      tabsFive.addEventListener('click', ()=>{
-          this.tabFive.classList.add("toshow");
-          this.tabFive.style.display = "block";
-          this.tabSix.style.display = "none";
-      });
+   <script>
+     var tabsFive = document.getElementById("tabs-5");
+     var tabFive = document.getElementById("tab-5");
+     var tabsSix = document.getElementById("tabs-6");
+     var tabSix = document.getElementById("tab-6");
 
-      tabsSix.addEventListener('click', ()=>{
-          this.tabSix.classList.add("toshow");
-          this.tabFive.style.display = 'none';
-          this.tabSix.style.display = "block";
-      });
+     tabsFive.addEventListener('click', () => {
+       this.tabFive.classList.add("toshow");
+       this.tabFive.style.display = "block";
+       this.tabSix.style.display = "none";
+     });
 
+     tabsSix.addEventListener('click', () => {
+       this.tabSix.classList.add("toshow");
+       this.tabFive.style.display = 'none';
+       this.tabSix.style.display = "block";
+     });
   </script>
-
-
-
 
   </body>
 
