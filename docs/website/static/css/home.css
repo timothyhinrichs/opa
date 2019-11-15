@@ -1162,5 +1162,7 @@ h4{
     font-size: 1.2rem;
 }
 
-
+.live--icon-bar--outer {
+    display: none; /* TODO: Fix this at some point? */
+}
 
