@@ -1708,6 +1708,10 @@ h4{
 
 }
 
+.live--block-container {
+    margin: 0;
+}
+
 .live--block-container .CodeMirror {
     height: auto;
     width: 100%;
@@ -1715,8 +1719,8 @@ h4{
     box-shadow: 2px 3px 6px rgba(51, 51, 51, 0.25);
     position: relative;
     border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 15px;
+    padding: 0;
+    margin: 0;
     font-size: 1rem;
 }
 
