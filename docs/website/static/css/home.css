@@ -1719,6 +1719,7 @@ h4{
     .tab-pane .nav-tabs{
         margin-left: 125px;
     }
+}
 
 .live--block-container .CodeMirror {
     height: auto;
@@ -1732,6 +1733,9 @@ h4{
     font-size: 1rem;
 }
 
+.live--icon-bar--outer {
+    display: none; /* TODO: Fix this at some point? */
+}
 
 @media screen and (max-width:1023px){
     .desktopView{
