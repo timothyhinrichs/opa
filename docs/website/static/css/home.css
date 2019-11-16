@@ -846,9 +846,9 @@ h4{
 }
 
 .policy-sharing h4{
-    position: absolute;
-    bottom: 20px;
-    left: 12%;
+    /* position: absolute;
+    bottom: 0px;
+    left: 25%; */
 }
 
 
