@@ -416,6 +416,12 @@
       this.tabSix.style.display = "block";
     });
 
+    $('a[data-toggle="pill"],a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+        $(".CodeMirror").each(function () {
+            this.CodeMirror.refresh();
+        });
+    });
+
   </script>
 
 
