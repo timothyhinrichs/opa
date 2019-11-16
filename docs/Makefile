@@ -1,3 +1,5 @@
+DEPLOY_PRIME_URL ?= "http://localhost:8888"
+
 .PHONY: clean
 clean:
 	rm -rf ${CURDIR}/website/data/releases.yaml
