@@ -360,6 +360,10 @@ a{
     padding: 25px;
 } */
 
+#subparagraph{
+    margin-top: 10px;
+}
+
 .codeSample{
     width: 100%;
     min-height: 30px;
@@ -901,7 +905,7 @@ h4{
     }
 
     .envoyLogo{
-        width: 35px !important;
+        width: 50px !important;
     }
     .nav-tabs .nav-width {
         width: 140px !important;
@@ -962,11 +966,12 @@ h4{
         max-width: 20%;
     }
     .nav-tabs{
-        margin-left: 15px;
+        margin-left: 35px;
     }
     .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
         padding: 15px 10px;
         font-size: 17px !important;
+        line-height: 30px;
     }
 
     .nav-tabs .nav-link{
@@ -975,14 +980,15 @@ h4{
 
     .nav-tabs .nav-link{
         font-size: 17px;
+        line-height: 30px;
     }
     .nav-tabs .nav-width{
-        width: 148px;
-        max-width: 148px;
+        width: 160px !important;
+        max-width: 160px !important;
     }
     .nav-tabs .nav-item img{
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -1040,7 +1046,7 @@ h4{
     }
 
     .declarativeText{
-        font-size: 14px;
+        font-size: 11px;
         line-height: 20px;
     }
     .envoy img{
@@ -1698,7 +1704,7 @@ h4{
     }
 }
 
-@media screen and (min-width:1000px){
+@media screen and (min-width:1024px){
 
     .col-lg-2{
         max-width:20% !important;
@@ -1706,11 +1712,13 @@ h4{
         flex: 0 0 20% !important;
     }
 
-}
+    .mobileView{
+        display: none;
+    }
 
-.live--block-container {
-    margin: 0;
-}
+    .tab-pane .nav-tabs{
+        margin-left: 125px;
+    }
 
 .live--block-container .CodeMirror {
     height: auto;
@@ -1724,7 +1732,12 @@ h4{
     font-size: 1rem;
 }
 
-.live--icon-bar--outer {
-    display: none; /* TODO: Fix this at some point? */
+
+@media screen and (max-width:1023px){
+    .desktopView{
+        display: none;
+    }
 }
+
+
 
