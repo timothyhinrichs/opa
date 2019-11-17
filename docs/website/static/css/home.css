@@ -908,9 +908,13 @@ h4{
         line-height: 18px;
     }
 
-    .envoyLogo{
-        width: 50px !important;
+    .envoy img{
+        width: 50px;
     }
+
+    /* .envoyLogo{
+        width: 50px !important;
+    } */
     .nav-tabs .nav-width {
         width: 140px !important;
         max-width: 140px;
