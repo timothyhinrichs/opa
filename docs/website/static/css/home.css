@@ -360,8 +360,12 @@ a{
     padding: 25px;
 } */
 
-#subparagraph{
-    margin-top: 10px;
+.subparagraph{
+    padding-top: 15px;
+}
+
+.text-left{
+    text-align: left
 }
 
 .codeSample{

@@ -285,10 +285,12 @@
                       <div class="highlight">
                         <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                           <code class="language-live" data-lang="live:kubernetes_registry_check_desktop:module:openable">package kubernetes.admission
-# reject any Pod with an image not from hooli.com
+
+# Reject any pod with an image not from hooli.com
 deny[msg] {
     input.request.kind.kind == "Pod"
-    image := input.request.object.spec.containers[_].image
+    some i
+    image := input.request.object.spec.containers[i].image
     not startswith(image, "hooli.com/")
     msg := sprintf("image '%v' comes from untrusted registry", [image])
 }
@@ -363,6 +365,7 @@ deny[msg] {
                         <code class="language-live" data-lang="live:envoy_get_pets_desktop:module:openable">package envoy.authz
 
 # allow all GET requests to /pets
+default allow = false
 allow {
     input.attributes.request.http.method == "GET"
     input.attributes.request.http.path == "/pets"
@@ -402,9 +405,10 @@ allow {
 # Ownership information is provided as part of OPA's input
 default allow = false
 allow {
-   input.method == "PUT"
-   input.path = ["pets", petid]
-   input.user == input.owner
+    input.method == "PUT"
+    some petid
+    input.path = ["pets", petid]
+    input.user == input.owner
 }
                         </code>
                       </pre>
@@ -487,18 +491,24 @@ allow {
                         <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                           <code class="language-live" data-lang="live:kubernetes_ingress_check_desktop:module:openable">package kubernetes.admission
 
+# Reject any ingress with the same host as an existing ingress
 deny[msg] {
-  some namespace, name
-  input.request.kind.kind == "Ingress"
-  newhost := input.request.object.spec.rules[_].host
-  oldhost := ingresses[namespace][name].spec.rules[_].host
-  newhost == oldhost
-  input.request.object.metadata.namespace != namespace
-  input.request.object.metadata.name != name
-  msg := sprintf("ingress host conflicts with ingress %v/%v", [namespace, name])
+    input.request.kind.kind == "Ingress"
+    # iterate over all hosts in input Ingress
+    some i
+    newhost := input.request.object.spec.rules[i].host
+    # iterate over all existing ingresses and all hosts for each ingress
+    some namespace, name, j
+    oldhost := data.kubernetes.ingresses[namespace][name].spec.rules[j].host
+    # reject if the oldhost and the newhost are the same
+    newhost == oldhost
+    msg := sprintf("ingress host conflicts with ingress %v/%v", [namespace, name])
 }
-
-
+                          </code>
+                        </pre>
+                      </div>
+<!-- 
+# Should be a separate module or the like; disable for now since not showing output
 # Hardcoded for demo.  In reality injected into OPA through API
 ingresses = {
   "foo": {
@@ -518,10 +528,7 @@ ingresses = {
               "backend": {
                 "serviceName": "banking",
                 "servicePort": 443
-}}]}}]}}}}
-                          </code>
-                        </pre>
-                      </div>
+}}]}}]}}}} -->
                       <div class="highlight">
                         <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                           <code class="language-live" data-lang="live:kubernetes_ingress_check_desktop:output:hidden">
@@ -593,18 +600,17 @@ ingresses = {
                       <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                         <code class="language-live" data-lang="live:envoy_get_pets_owners_desktop:module:openable">package envoy.authz
 
-import input.attributes.request.http as http_request
-
+# allow only the frontend service to run GET /pets/owners
 default allow = false
 allow {
-  http_request.path == "/pets/owners"
-  http_request.method == "GET"
-  source_spiffe_id == "spiffe://domain.test/frontend"
+    input.attributes.request.http.path == "/pets/owners"
+    input.attributes.request.http.method == "GET"
+    source_spiffe_id == "spiffe://domain.test/frontend"
 }
 
 source_spiffe_id = client_id {
-  [_, _, uri_type_san] := split(http_request.headers["x-forwarded-client-cert"], ";")
-  [_, client_id] := split(uri_type_san, "=")
+    [_, _, uri_type_san] := split(input.attributes.request.http.headers["x-forwarded-client-cert"], ";")
+    [_, client_id] := split(uri_type_san, "=")
 }
                         </code>
                       </pre>
@@ -646,18 +652,17 @@ package application.authz
 
 # Everyone can see adopted pets
 allowed_pets[pet] {
-  pet := input.pet_list[_]
+    some i
+    pet := input.pet_list[i]
     pet.up_for_adoption == true
 }
 
 # Employees can see all pets.
-#   Hint: to see token contents, highlight and evaluate the line with io.jwt.decode.
-#   To build your own JWT token you can use OPA's io.jwt.encode_sign()
-#      https://www.openpolicyagent.org/docs/latest/policy-reference/#token-signing-examples
 allowed_pets[pet] {
-  pet := input.pet_list[_]
     [header, payload, signature] := io.jwt.decode(input.token)
     payload.employee == true
+    some i
+    pet := input.pet_list[i]
 }
                         </code>
                       </pre>
@@ -801,7 +806,8 @@ allowed_pets[pet] {
 
 deny[msg] {
     input.request.kind.kind == "Pod"
-    image := input.request.object.spec.containers[_].image
+    some i
+    image := input.request.object.spec.containers[i].image
     not startswith(image, "hooli.com/")
     msg := sprintf("image '%v' comes from untrusted registry", [image])
 }
@@ -862,19 +868,23 @@ deny[msg] {
                             <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                               <code class="language-live" data-lang="live:kubernetes_ingress_check_mobile:module:openable">package kubernetes.admission
 
+# Reject any ingress with the same host as an existing ingress
 deny[msg] {
-  some namespace, name
-  input.request.kind.kind == "Ingress"
-  newhost := input.request.object.spec.rules[_].host
-  oldhost := ingresses[namespace][name].spec.rules[_].host
-  newhost == oldhost
-  input.request.object.metadata.namespace != namespace
-  input.request.object.metadata.name != name
-  msg := sprintf("ingress host conflicts with ingress %v/%v", [namespace, name])
+    input.request.kind.kind == "Ingress"
+    # iterate over all hosts in input Ingress
+    some i
+    newhost := input.request.object.spec.rules[i].host
+    # iterate over all existing ingresses and all hosts for each ingress
+    some namespace, name, j
+    oldhost := data.kubernetes.ingresses[namespace][name].spec.rules[j].host
+    # reject if the oldhost and the newhost are the same
+    newhost == oldhost
+    msg := sprintf("ingress host conflicts with ingress %v/%v", [namespace, name])
 }
-
-
-# Hardcoded for demo.  In reality injected into OPA through API
+                                                                </code>
+                            </pre>
+                        </div>
+<!-- # Hardcoded for demo.  In reality injected into OPA through API
 ingresses = {
   "foo": {
     "dev": {
@@ -893,10 +903,7 @@ ingresses = {
               "backend": {
                 "serviceName": "banking",
                 "servicePort": 443
-}}]}}]}}}}
-                              </code>
-                            </pre>
-                        </div>
+}}]}}]}}}} -->
                         <div class="highlight">
                             <pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
                               <code class="language-live" data-lang="live:kubernetes_ingress_check_mobile:output:hidden">
@@ -998,9 +1005,10 @@ ingresses = {
                               <code class="language-live" data-lang="live:envoy_get_pets_mobile:module:openable">package envoy.authz
 
 # allow all GET requests to /pets
+default allow = false
 allow {
-  input.attributes.request.http.method == "GET"
-  input.attributes.request.http.path == "/pets"
+    input.attributes.request.http.method == "GET"
+    input.attributes.request.http.path == "/pets"
 }
                               </code>
                             </pre>
@@ -1076,6 +1084,7 @@ allow {
                               <code class="language-live" data-lang="live:envoy_get_pets_owners_mobile:module:openable">package envoy.authz
 import input.attributes.request.http as http_request
 
+# allow only the frontend service to GET /pets/owners
 default allow = false
 allow {
     http_request.path == "/pets/owners"
@@ -1151,9 +1160,10 @@ source_spiffe_id = client_id {
 # Ownership information is provided as part of OPA's input
 default allow = false
 allow {
-   input.method == "PUT"
-   input.path = ["pets", petid]
-   input.user == input.owner
+    input.method == "PUT"
+    some petid
+    input.path = ["pets", petid]
+    input.user == input.owner
 }
                               </code>
                             </pre>
@@ -1196,18 +1206,17 @@ package application.authz
 
 # Everyone can see adopted pets
 allowed_pets[pet] {
-  pet := input.pet_list[_]
+    some i
+    pet := input.pet_list[i]
     pet.up_for_adoption == true
 }
 
 # Employees can see all pets.
-#   Hint: to see token contents, highlight and evaluate the line with io.jwt.decode.
-#   To build your own JWT token you can use OPA's io.jwt.encode_sign()
-#      https://www.openpolicyagent.org/docs/latest/policy-reference/#token-signing-examples
 allowed_pets[pet] {
-  pet := input.pet_list[_]
     [header, payload, signature] := io.jwt.decode(input.token)
     payload.employee == true
+    some i
+    pet := input.pet_list[i]
 }
                               </code>
                             </pre>
@@ -1312,7 +1321,7 @@ allowed_pets[pet] {
                   <div class="col-3 space-right blackColor">Data<br> (JSON)</div>
                   <div class="col-3"></div>
                 </div>
-                <div class="mt-5">
+                <div class="mt-5 text-left">
                   <p>Deploy OPA as a separate process on the same
                     host as your service. Integrate OPA by changing
                     your service’s code, importing an OPA-enabled
@@ -1349,7 +1358,7 @@ allowed_pets[pet] {
                   <div class="col-3 space-right blackColor">Data<br> (JSON)</div>
                   <div class="col-3"></div>
                 </div>
-                <div class="mt-5">
+                <div class="mt-5 text-left">
                   <p>Embed OPA policies into your service. Integrate OPA as a Go library
                     that evaluates policy, or integrate a WebAssembly runtime and use OPA
                     to compile policy to WebAssembly instructions.</p>
@@ -1403,7 +1412,7 @@ allowed_pets[pet] {
             <h4>CLI and REPL for complete control</h4>
           </div>
         </div>
-        <div class="col-12 mt-3 policy-text">
+        <div class="col-12 mt-3 policy-text text-left">
           <p>OPA embraces policy-as-code, complete with tools that help people use and understand the policies they put
             in
             place. Integrated development environments, testing, profiling, coverage, automated performance tuning, and
