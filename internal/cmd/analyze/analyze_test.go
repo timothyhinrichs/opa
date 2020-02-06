@@ -419,3 +419,97 @@ func TestRuntimeComplexityMissing(t *testing.T) {
 		})
 	}
 }
+
+type aTest struct {
+	input   string
+	answers []ans
+}
+type ans struct {
+	name    string
+	want    string
+	missing bool
+}
+
+func TestRuntimeComplexityTim(t *testing.T) {
+	tests := map[string]aTest{}
+
+	tests["use of expensive complete rule definition multiple times"] = aTest{
+		answers: []ans{
+			ans{name: "p", want: "O(1)"},
+			ans{name: "myname", want: "O(input.bar) * O(input.bar) * O(input.bar)"},
+			ans{name: "deny", want: "O(input.bar) * O(input.bar) * O(input.bar)"},
+		},
+		input: `
+			package example
+			deny[x] {
+				input.request.foo == myname
+				x := sprintf("something here %v", [myname])
+			}
+			myname = 7 {
+				p[_]
+				p[_]
+				p[_]
+			}
+			p = input.bar`,
+	}
+
+	tests["unanalyzable dependent rule definition"] = aTest{
+		answers: []ans{
+			ans{name: "deny", missing: true},
+			ans{name: "input_container", missing: true},
+		},
+		input: `
+			package example
+			deny[x] {
+				input_container[c]
+				startswith(c.image, "foobar")
+				x := sprintf("something here %v", [c.image])
+			}
+			input_container[c] {
+				input.request.container[i] = c
+				num := [x | x := input.request.container[i].foo[_]]
+				count(num) > 3
+			}`,
+	}
+
+	tests["nonexistent rule definition"] = aTest{
+		answers: []ans{
+			ans{name: "deny", want: "O(1)"},
+		},
+		input: `
+			package example
+			deny[x] {
+				input_container[c]
+				startswith(c.image, "foobar")
+				x := sprintf("something here %v", [c.image])
+			}`,
+	}
+
+	for testname, tc := range tests {
+		t.Run(testname, func(t *testing.T) {
+			actual := CalculateRuntimeComplexity(ast.MustParseModule(tc.input))
+			for _, ans := range tc.answers {
+				if ans.missing {
+					if _, ok := actual.Missing[ans.name]; !ok {
+						if val, ok := actual.Result[ans.name]; ok {
+							t.Fatalf("Virtualdoc %v should be unanalyzable but is not: %v", ans.name, val)
+						} else {
+							t.Fatalf("Virtualdoc %v should be unanalyzable but is not.  Found no result either", ans.name)
+						}
+					} else {
+						if val, ok := actual.Result[ans.name]; ok {
+							t.Fatalf("Missing value should not also have a Result: %v has Result %v", ans.name, val)
+						}
+					}
+				} else {
+					if len(actual.Result[ans.name]) == 0 {
+						t.Fatalf("Runtime complexity for %v is empty: %v", ans.name, actual.Result[ans.name])
+					}
+					if ans.want != actual.Result[ans.name][0] {
+						t.Fatalf("Expected runtime complexity %v but got %v", ans.want, actual.Result[ans.name][0])
+					}
+				}
+			}
+		})
+	}
+}
