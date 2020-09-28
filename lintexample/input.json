@@ -1,0 +1,1212 @@
+{
+    "lint.rego": {
+      "package": {
+        "path": [
+          {
+            "type": "var",
+            "value": "data"
+          },
+          {
+            "type": "string",
+            "value": "system"
+          },
+          {
+            "type": "string",
+            "value": "lint"
+          }
+        ]
+      },
+      "rules": [
+        {
+          "head": {
+            "name": "permitted_heads",
+            "value": {
+              "type": "set",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "allow"
+                },
+                {
+                  "type": "string",
+                  "value": "deny"
+                }
+              ]
+            },
+            "assign": true
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "boolean",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "required_heads",
+            "value": {
+              "type": "set",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "authz"
+                }
+              ]
+            },
+            "assign": true
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "boolean",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "deny",
+            "key": {
+              "type": "var",
+              "value": "msg"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "ref",
+                "value": [
+                  {
+                    "type": "var",
+                    "value": "data"
+                  },
+                  {
+                    "type": "string",
+                    "value": "system"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lint"
+                  },
+                  {
+                    "type": "string",
+                    "value": "non_permitted_heads"
+                  },
+                  {
+                    "type": "var",
+                    "value": "msg"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "deny",
+            "key": {
+              "type": "var",
+              "value": "msg"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "ref",
+                "value": [
+                  {
+                    "type": "var",
+                    "value": "data"
+                  },
+                  {
+                    "type": "string",
+                    "value": "system"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lint"
+                  },
+                  {
+                    "type": "string",
+                    "value": "missing_heads"
+                  },
+                  {
+                    "type": "var",
+                    "value": "msg"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "incorrect_k8s_enforce_type_format",
+            "key": {
+              "type": "var",
+              "value": "__local3__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local2__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "data"
+                    },
+                    {
+                      "type": "string",
+                      "value": "system"
+                    },
+                    {
+                      "type": "string",
+                      "value": "lint"
+                    },
+                    {
+                      "type": "string",
+                      "value": "user_packages"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local0__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "rules"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local1__"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local2__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "head"
+                    },
+                    {
+                      "type": "string",
+                      "value": "name"
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "value": "enforced"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local2__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "head"
+                    },
+                    {
+                      "type": "string",
+                      "value": "value"
+                    },
+                    {
+                      "type": "string",
+                      "value": "type"
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "value": "set"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "terms": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "index": 4,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local3__"
+                },
+                {
+                  "type": "string",
+                  "value": "foo"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "missing_heads",
+            "key": {
+              "type": "var",
+              "value": "__local7__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local5__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "data"
+                    },
+                    {
+                      "type": "string",
+                      "value": "system"
+                    },
+                    {
+                      "type": "string",
+                      "value": "lint"
+                    },
+                    {
+                      "type": "string",
+                      "value": "user_packages"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local4__"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "terms": {
+                "type": "ref",
+                "value": [
+                  {
+                    "type": "var",
+                    "value": "data"
+                  },
+                  {
+                    "type": "string",
+                    "value": "system"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lint"
+                  },
+                  {
+                    "type": "string",
+                    "value": "required_heads"
+                  },
+                  {
+                    "type": "var",
+                    "value": "__local6__"
+                  }
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "negated": true,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "data"
+                    },
+                    {
+                      "type": "string",
+                      "value": "system"
+                    },
+                    {
+                      "type": "string",
+                      "value": "lint"
+                    },
+                    {
+                      "type": "string",
+                      "value": "rule_head_exists_in_package"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local4__"
+                },
+                {
+                  "type": "var",
+                  "value": "__local6__"
+                }
+              ]
+            },
+            {
+              "generated": true,
+              "index": 3,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "sprintf"
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "value": "Required variable %v does not exist in package %v"
+                },
+                {
+                  "type": "array",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local6__"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local4__"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local25__"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local7__"
+                },
+                {
+                  "type": "var",
+                  "value": "__local25__"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "rule_head_exists_in_package",
+            "args": [
+              {
+                "type": "var",
+                "value": "__local21__"
+              },
+              {
+                "type": "var",
+                "value": "__local22__"
+              }
+            ],
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "data"
+                    },
+                    {
+                      "type": "string",
+                      "value": "system"
+                    },
+                    {
+                      "type": "string",
+                      "value": "lint"
+                    },
+                    {
+                      "type": "string",
+                      "value": "user_packages"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local21__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "rules"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local10__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "head"
+                    },
+                    {
+                      "type": "string",
+                      "value": "name"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local22__"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "non_permitted_heads",
+            "key": {
+              "type": "var",
+              "value": "__local15__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local12__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "data"
+                    },
+                    {
+                      "type": "string",
+                      "value": "system"
+                    },
+                    {
+                      "type": "string",
+                      "value": "lint"
+                    },
+                    {
+                      "type": "string",
+                      "value": "user_packages"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local11__"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local14__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local12__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "rules"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local13__"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "generated": true,
+              "index": 2,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local28__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local14__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "head"
+                    },
+                    {
+                      "type": "string",
+                      "value": "name"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "negated": true,
+              "terms": {
+                "type": "ref",
+                "value": [
+                  {
+                    "type": "var",
+                    "value": "data"
+                  },
+                  {
+                    "type": "string",
+                    "value": "system"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lint"
+                  },
+                  {
+                    "type": "string",
+                    "value": "permitted_heads"
+                  },
+                  {
+                    "type": "var",
+                    "value": "__local28__"
+                  }
+                ]
+              }
+            },
+            {
+              "generated": true,
+              "index": 4,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local29__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local14__"
+                    },
+                    {
+                      "type": "string",
+                      "value": "head"
+                    },
+                    {
+                      "type": "string",
+                      "value": "name"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "generated": true,
+              "index": 5,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "sprintf"
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "value": "Rule head not permitted: %v"
+                },
+                {
+                  "type": "array",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "__local29__"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local26__"
+                }
+              ]
+            },
+            {
+              "index": 6,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local15__"
+                },
+                {
+                  "type": "var",
+                  "value": "__local26__"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "user_packages",
+            "key": {
+              "type": "var",
+              "value": "__local20__"
+            },
+            "value": {
+              "type": "var",
+              "value": "__local17__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local17__"
+                },
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "input"
+                    },
+                    {
+                      "type": "var",
+                      "value": "__local16__"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local19__"
+                },
+                {
+                  "type": "arraycomprehension",
+                  "value": {
+                    "term": {
+                      "type": "var",
+                      "value": "__local18__"
+                    },
+                    "body": [
+                      {
+                        "index": 0,
+                        "terms": [
+                          {
+                            "type": "ref",
+                            "value": [
+                              {
+                                "type": "var",
+                                "value": "eq"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "var",
+                            "value": "__local18__"
+                          },
+                          {
+                            "type": "ref",
+                            "value": [
+                              {
+                                "type": "var",
+                                "value": "__local17__"
+                              },
+                              {
+                                "type": "string",
+                                "value": "package"
+                              },
+                              {
+                                "type": "string",
+                                "value": "path"
+                              },
+                              {
+                                "type": "var",
+                                "value": "j"
+                              },
+                              {
+                                "type": "string",
+                                "value": "value"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "generated": true,
+              "index": 2,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "concat"
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "value": "."
+                },
+                {
+                  "type": "var",
+                  "value": "__local19__"
+                },
+                {
+                  "type": "var",
+                  "value": "__local27__"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local20__"
+                },
+                {
+                  "type": "var",
+                  "value": "__local27__"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "negated": true,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "startswith"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local20__"
+                },
+                {
+                  "type": "string",
+                  "value": "data.system"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "Text": "IHBlcm1pdHRlZCBoZWFkcw==",
+          "Location": {
+            "file": "lint.rego",
+            "row": 36,
+            "col": 1
+          }
+        },
+        {
+          "Text": "IGZpbHRlciBvdXQgcGFja2FnZXM=",
+          "Location": {
+            "file": "lint.rego",
+            "row": 46,
+            "col": 1
+          }
+        }
+      ]
+    },
+    "t.rego": {
+      "package": {
+        "path": [
+          {
+            "type": "var",
+            "value": "data"
+          },
+          {
+            "type": "string",
+            "value": "foo"
+          }
+        ]
+      },
+      "rules": [
+        {
+          "head": {
+            "name": "allow",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "boolean",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "allow",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "deny",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "ref",
+                "value": [
+                  {
+                    "type": "var",
+                    "value": "data"
+                  },
+                  {
+                    "type": "string",
+                    "value": "foo"
+                  },
+                  {
+                    "type": "string",
+                    "value": "bar"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "bar",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": {
+                "type": "boolean",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "enforce",
+            "key": {
+              "type": "var",
+              "value": "__local23__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local23__"
+                },
+                {
+                  "type": "string",
+                  "value": "a string"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "head": {
+            "name": "enforce",
+            "key": {
+              "type": "var",
+              "value": "__local24__"
+            }
+          },
+          "body": [
+            {
+              "index": 0,
+              "terms": [
+                {
+                  "type": "ref",
+                  "value": [
+                    {
+                      "type": "var",
+                      "value": "eq"
+                    }
+                  ]
+                },
+                {
+                  "type": "var",
+                  "value": "__local24__"
+                },
+                {
+                  "type": "object",
+                  "value": [
+                    [
+                      {
+                        "type": "string",
+                        "value": "allowed"
+                      },
+                      {
+                        "type": "boolean",
+                        "value": true
+                      }
+                    ],
+                    [
+                      {
+                        "type": "string",
+                        "value": "message"
+                      },
+                      {
+                        "type": "string",
+                        "value": "foobar"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
